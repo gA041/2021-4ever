@@ -273,13 +273,11 @@
             div.classList.add("falling");
             div.innerText = emojis[Math.floor(Math.random() * emojis.length)];
             div.style.left = Math.random() * 100 + "%";
-            // 更慢、更分散：速度从 4~7秒，大小更均匀
             div.style.animationDuration = (Math.random() * 3 + 6) + "s";
             div.style.fontSize = (Math.random() * 10 + 14) + "px";
             document.body.appendChild(div);
             setTimeout(() => div.remove(), 9000);
         }
-        // 生成间隔拉大，更分散
         setInterval(createFalling, 900);
     </script>
 
