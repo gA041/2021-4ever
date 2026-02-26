@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2021 4ever ✨ 肥嘟嘟左卫门</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', 'Segoe UI', '楷体', 'Microsoft YaHei', sans-serif;
+            background: url('gsy666.jpg') no-repeat center/cover fixed;
+            position: relative;
+        }
+        /* 粉色半透明遮罩 - 呼应肥嘟嘟的粉红身体 */
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 200, 220, 0.25);
+            backdrop-filter: blur(3px);
+        }
+        .card {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 240, 250, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 70px 30px 70px 30px;
+            padding: 2rem 2.5rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(200, 150, 200, 0.3), 0 0 0 3px #ffe0f0 inset;
+            border: 2px solid #ffb6d9;
+            width: 90%;
+            max-width: 850px;
+            margin: 1.5rem auto;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        h1 {
+            font-size: 4.5rem;
+            background: linear-gradient(135deg, #8a4fff, #b36bff); /* 深紫色渐变 - 呼应左卫门的紫色裤子 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 15px #ffc0e0;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            border-bottom: 3px dashed #d9a6ff;
+            padding-bottom: 0.3rem;
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+        .choices {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 1.5rem 0 1rem;
+            flex-wrap: wrap;
+        }
+        button {
+            border: none;
+            font-size: 2.5rem;
+            padding: 0.6rem 2.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #ff9fd0, 0 8px 20px rgba(255, 150, 200, 0.4);
+            transition: all 0.1s ease;
+            background: #fff0f7;
+            color: #7a4f9f;
+            min-width: 140px;
+            border: 2px solid #ffffff;
+            letter-spacing: 2px;
+        }
+        button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 0 #ff80bf, 0 12px 25px rgba(255, 130, 200, 0.5);
+            background: #fff5fa;
+        }
+        button:active {
+            transform: translateY(5px);
+            box-shadow: 0 2px 0 #ff80bf;
+        }
+        #btnYes {
+            background: #ffe4f0;
+            color: #6a3f8a;
+        }
+        #btnNo {
+            background: #fad4e8;
+            color: #5a3575;
+        }
+        #output {
+            margin: 1.2rem 0 1.2rem;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            background: rgba(255, 230, 245, 0.8);
+            padding: 1.2rem 1.8rem;
+            border-radius: 35px;
+            color: #4a2f6a;
+            min-height: 3.5rem;
+            text-align: left;
+            white-space: pre-wrap;
+            font-family: '楷体', 'KaiTi', 'Georgia', serif;
+            max-height: 350px;
+            overflow-y: auto;
+            border: 2px solid #ffb6e1;
+            box-shadow: inset 0 2px 10px #ffe0f0;
+        }
+
+        /* 健康贴士栏 - 缩小版 */
+        .health-section {
+            margin-top: 0.8rem;
+            border-top: 2px dashed #e5b3ff;
+            padding-top: 0.7rem;
+            text-align: left;
+        }
+        .health-section h2 {
+            font-size: 1.1rem;
+            color: #7a4fa0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            padding-left: 0.3rem;
+            border-left: 4px solid #ffa6d0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .health-section h2 span {
+            font-size: 1rem;
+        }
+        .health-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .link-card {
+            background: rgba(255, 235, 245, 0.6);
+            backdrop-filter: blur(3px);
+            border-radius: 16px;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid #ffb6d9;
+            transition: 0.2s;
+        }
+        .link-card:hover {
+            background: rgba(255, 235, 245, 0.9);
+            transform: translateX(3px);
+            box-shadow: 0 2px 6px rgba(255, 150, 200, 0.3);
+        }
+        .link-card a {
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #6a3f8a;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .link-card a:hover {
+            color: #b14f9f;
+        }
+        .link-icon {
+            font-size: 1rem;
+        }
+        .link-desc {
+            font-size: 0.7rem;
+            color: #8f5fa8;
+            margin-top: 0.1rem;
+            padding-left: 1.6rem;
+            line-height: 1.2;
+        }
+
+        /* 底部免责条 - 更小 */
+        .health-section > div:last-child {
+            margin-top: 0.4rem !important;
+            font-size: 0.7rem !important;
+            padding: 0.25rem !important;
+            border-radius: 15px !important;
+        }
+
+        /* 临时弹窗样式 - 粉色主题 */
+        .toast, .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(200, 120, 180, 0.95);
+            backdrop-filter: blur(10px);
+            color: #fff5fa;
+            padding: 1.2rem 2.2rem;
+            border-radius: 50px;
+            font-size: 1.8rem;
+            border: 3px solid #ffc0e6;
+            z-index: 10000;
+            text-align: center;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+        }
+        .modal {
+            background: #fff0f7;
+            color: #6a3f8a;
+            padding: 1.8rem;
+        }
+        .modal-btns {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1.2rem;
+        }
+        .modal-btns button {
+            font-size: 1.8rem;
+            min-width: 90px;
+            padding: 0.4rem 1.2rem;
+            box-shadow: 0 4px 0 #c47ac4;
+        }
+
+        @media (max-width: 700px) {
+            .card { padding: 1.5rem; }
+            h1 { font-size: 3rem; }
+            button { font-size: 2rem; min-width: 100px; }
+            .link-card a { font-size: 0.8rem; }
+            #output { font-size: 1rem; padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h1>2021 4ever?</h1>
+    
+    <div class="choices">
+        <button id="yesBtn">yes</button>
+        <button id="noBtn">no</button>
+    </div>
+    
+    <!-- 点击yes后显示长文本的区域 -->
+    <div id="output"></div>
+
+    <!-- 健康贴士栏 - 缩小版 -->
+    <div class="health-section">
+        <h2><span>🐷</span> 嗓子 · 心跳 <span>💜</span></h2>
+        <div class="health-links">
+            <!-- 嗓子疼相关 -->
+            <div class="link-card">
+                <a href="https://www.msdmanuals.cn/home/ear-nose-and-throat-disorders/symptoms-of-nose-and-throat-disorders/sore-throat" target="_blank">
+                    <span class="link-icon">🔗</span> 喉咙痛 · 默沙东
+                </a>
+                <div class="link-desc">感染/脓肿/会厌炎</div>
+            </div>
+            <div class="link-card">
+                <a href="https://health.iqilu.com/stjk/jkyw/2025/0426/5805532.shtml" target="_blank">
+                    <span class="link-icon">🔗</span> 护嗓指南 · 光明日报
+                </a>
+                <div class="link-desc">咽炎/含片/日常护嗓</div>
+            </div>
+            <div class="link-card">
+                <a href="https://puh3.net.cn/info/2451/156821.htm" target="_blank">
+                    <span class="link-icon">🔗</span> 用嗓习惯 · 北医三院
+                </a>
+                <div class="link-desc">嗓音健康/声带保护</div>
+            </div>
+            
+            <!-- 心跳快相关 -->
+            <div class="link-card">
+                <a href="https://m.dayi.org.cn/qa/356786.html" target="_blank">
+                    <span class="link-icon">🔗</span> 心跳过快 · 安贞医院
+                </a>
+                <div class="link-desc">贫血/甲亢/心肌炎</div>
+            </div>
+            <div class="link-card">
+                <a href="https://m.dayi.org.cn/qa/341785.html" target="_blank">
+                    <span class="link-icon">🔗</span> 心率过快 · 西苑医院
+                </a>
+                <div class="link-desc">年龄/药物/高血压</div>
+            </div>
+            <div class="link-card">
+                <a href="http://health.people.com.cn/n1/2019/0220/c14739-30808228.html" target="_blank">
+                    <span class="link-icon">🔗</span> 心跳快7原因 · 人民网
+                </a>
+                <div class="link-desc">压力/咖啡因/缺觉</div>
+            </div>
+            
+            <!-- 两者关联 -->
+            <div class="link-card">
+                <a href="https://cont.jd.com/content/1010_4_1jD_bFR5kgCW7R" target="_blank">
+                    <span class="link-icon">🔗</span> 心跳快+咽喉痛 · 京东
+                </a>
+                <div class="link-desc">感冒/心肌炎可能</div>
+            </div>
+            <div class="link-card">
+                <a href="http://kangpuyun.com/detail/86553413.html" target="_blank">
+                    <span class="link-icon">🔗</span> 心率快嗓子堵 · 安贞
+                </a>
+                <div class="link-desc">调整呼吸/就医时机</div>
+            </div>
+        </div>
+        <div style="margin-top: 0.4rem; font-size: 0.7rem; color: #9f6fb0; text-align: center; background: rgba(255, 200, 230, 0.3); border-radius: 15px; padding: 0.25rem;">
+            ⚕️ 科普仅供参考
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const longText = `宝宝 和你在一起的日子总是这么幸福且短暂 和你见面很开心又很难过 每次洗漱完出来看到你都在我睡的那一边放好水 我就拿起手机边看日历边想 还有多少天就又要和你分开 我父母总是告诉我我长大了不可以再那么依赖别人 要独立 也不会怎么和我表达感情 交流也是越来越少 让我一直都认为人是漂泊的候鸟 直到你告诉我我可以去依赖你 信任你 多和你表达感受 我又觉得爱是可以宜居的小岛 有一种 我见众生皆草木 唯独见你是青山的感觉 你也总是很照顾我 虽然我会莫名其妙跟你生一些小气 但你都会说是你的错 包容我 这些都是我从未体验过的 我总说我不信任你 不是你做的不够好 是我怕信任你依赖你之后如果你不喜欢我了我又要变回原来的样子 那我要怎么习惯 但你好像拥有什么魔法 让我可以一点点向你摊呈自己 也让你看到我的脆弱 眼泪 还有一些不完美的那面 但真诚的 谢谢你的存在 有你在我总会很安心  送你去高铁站我想让你快点进去 这样我就不会那么舍不得你 而我现在能给你的又太少 再给我一点时间 以后一定能给你 我发誓 我不是很会表达这些情情话话的东西 但真心希望你好 我们互相加油变成更好的自己
+山高路远 一路平安  一个人在国外照顾好自己 虽然每次我说这句话 你都说你已经会很好的照顾自己了 但想到你一个人面对那些  一个人拖行李 落地要从机场坐那么久的车才能到家 也很不容易 我心疼你 做饭的时候小心不要烫到 走路要慢慢走 小心不要磕磕碰碰 多喝热水 要少吃褪黑素  不要着凉不要生病！我爱你 要多多想我 不可以哭哭噢  多笑笑`;
+
+        let toastTimer = null;
+        let currentToast = null;
+
+        function clearToast() {
+            if (toastTimer) clearTimeout(toastTimer);
+            if (currentToast) currentToast.remove();
+            currentToast = null;
+        }
+
+        function showToast(msg, duration, callback) {
+            clearToast();
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = msg;
+            document.body.appendChild(toast);
+            currentToast = toast;
+            toastTimer = setTimeout(() => {
+                toast.remove();
+                currentToast = null;
+                if (callback) callback();
+            }, duration);
+        }
+
+        function showDoubleYesModal() {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div style="font-size:2rem; margin-bottom:1rem;">两个选择都是 yes 🐷</div>
+                <div class="modal-btns">
+                    <button class="yes-option">yes</button>
+                    <button class="yes-option">yes</button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            const closeModal = () => {
+                modal.remove();
+                alert('恭喜snx要永远爱我 💕');
+            };
+            modal.querySelectorAll('.yes-option').forEach(btn => btn.addEventListener('click', closeModal));
+        }
+
+        document.getElementById('yesBtn').addEventListener('click', () => {
+            clearToast();
+            document.getElementById('output').innerText = longText;
+            const oldModal = document.querySelector('.modal');
+            if(oldModal) oldModal.remove();
+        });
+
+        document.getElementById('noBtn').addEventListener('click', () => {
+            document.getElementById('output').innerText = '';
+            const oldModal = document.querySelector('.modal');
+            if(oldModal) oldModal.remove();
+            showToast('不再仔细想想了吗，确定吗？', 3000, () => {
+                showDoubleYesModal();
+            });
+        });
+    })();
+</script>
+</body>
+</html>
