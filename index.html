@@ -7,7 +7,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
-  background-image:url('gsy6ong.jpg');
+  background-image:url('gsy666.jpg');
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
@@ -103,20 +103,19 @@ button{
   <div id="content"></div>
 
   <audio class="music" controls autoplay muted>
-    <source src="https://assets.mixkit.co/sfx/preview/mixkit-romantic-piano-loop-109.mp3" type="audio/mpeg">
+    <source src="https://cdn.jsdelivr.net/gh/2505698954/audio/keairen.mp3" type="audio/mpeg">
   
 
   <div class="tips">
     小贴士：
-    <a href="https://www.baidu.com/s?wd=嗓子痛怎么办" target="_blank">嗓子痛</a>
-    <a href="https://www.baidu.com/s?wd=如何保护嗓子" target="_blank">护嗓</a>
-    <a href="https://www.baidu.com/s?wd=日常保养身体" target="_blank">身体保养</a>
+    <a href=" " target="_blank">嗓子痛</a >
+    <a href="https://www.baidu.com/s?wd=如何保护嗓子" target="_blank">护嗓</a >
+    <a href="https://www.baidu.com/s?wd=日常保养身体" target="_blank">身体保养</a >
     仅供参考
   </div>
 </div>
 
 <script>
-// 点一下就播放音乐，15秒自动停
 window.addEventListener('click', function() {
   const a = document.querySelector('audio');
   a.muted = false;
@@ -138,7 +137,7 @@ yesBtn.onclick = () => { content.innerText = loveText; clearAll(); };
 noBtn.onclick = () => {
   content.innerText = '';
   modal('不再仔细想想了吗，确定吗');
-  setTimeout(() => { clearAll(); modal('两个选择都是yes'); }, 3000);
+  setTimeout(() => { clearAll(); modal('不给你选择no的机会哦'); }, 3000);
 };
 
 function modal(text){
