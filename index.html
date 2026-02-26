@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* 飘落动画 —— 更慢、更分散 */
+        /* 飘落动画 */
         .falling {
             position: fixed;
             top: -10vh;
@@ -48,7 +48,7 @@
                 opacity: 1;
             }
             100% {
-                transform: translateX(80px) rotate(720deg);
+                transform: translateX(100px) rotate(360deg);
                 top: 105vh;
                 opacity: 0;
             }
@@ -142,7 +142,7 @@
 
         /* 标题改小 */
         h1 {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             color: #ffffff;
             text-shadow: 0 0 15px rgba(255,255,255,0.8), 2px 2px 4px rgba(0,0,0,0.5);
             margin-bottom: 3rem;
@@ -246,7 +246,7 @@
     </div>
 
     <div class="container">
-        <h1>2021 4ever吗？🐈🐾</h1>
+        <h1>2021 4ever吗？🐈♾️✨💍🐾</h1>
         
         <div class="buttons">
             <button id="yesBtn">yes ✨</button>
@@ -273,12 +273,13 @@
             div.classList.add("falling");
             div.innerText = emojis[Math.floor(Math.random() * emojis.length)];
             div.style.left = Math.random() * 100 + "%";
-            div.style.animationDuration = (Math.random() * 3 + 6) + "s";
+            // 更慢、更分散
+            div.style.animationDuration = (Math.random() * 4 + 8) + "s";
             div.style.fontSize = (Math.random() * 10 + 14) + "px";
             document.body.appendChild(div);
-            setTimeout(() => div.remove(), 9000);
+            setTimeout(() => div.remove(), 10000);
         }
-        setInterval(createFalling, 900);
+        setInterval(createFalling, 1200);
     </script>
 
     <script>
