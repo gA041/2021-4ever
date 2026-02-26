@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>snx gsy 永远在一起</title>
+    <title>2021 4ever吗？✨🐈</title>
     <style>
         * {
             margin: 0;
@@ -54,83 +54,6 @@
             }
         }
 
-        /* 纯CSS小猫挂件 */
-        .cat {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            width: 60px;
-            height: 50px;
-            z-index: 99;
-            animation: catSwing 4s ease-in-out infinite;
-        }
-        @keyframes catSwing {
-            0%,100% { transform: rotate(0deg); }
-            50% { transform: rotate(-5deg); }
-        }
-        .cat::before {
-            content: "";
-            position: absolute;
-            width: 30px;
-            height: 25px;
-            background: #fff;
-            border-radius: 50%;
-            top: 0;
-            left: 15px;
-        }
-        .cat-ear {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-bottom: 16px solid #fff;
-        }
-        .cat-ear.left {
-            top: -8px;
-            left: 16px;
-            transform: rotate(-20deg);
-        }
-        .cat-ear.right {
-            top: -8px;
-            right: 16px;
-            transform: rotate(20deg);
-        }
-        .cat-eye {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: #333;
-            border-radius: 50%;
-            top: 8px;
-        }
-        .cat-eye.left { left: 22px; }
-        .cat-eye.right { right: 22px; }
-        .cat-body {
-            position: absolute;
-            width: 36px;
-            height: 28px;
-            background: #fff;
-            border-radius: 50% 50% 30% 30%;
-            bottom: 0;
-            left: 12px;
-        }
-        .cat-tail {
-            position: absolute;
-            width: 25px;
-            height: 8px;
-            background: #fff;
-            border-radius: 4px;
-            bottom: 5px;
-            right: -10px;
-            transform-origin: left center;
-            animation: tail 2s linear infinite;
-        }
-        @keyframes tail {
-            0%,100% { transform: rotate(0deg); }
-            50% { transform: rotate(15deg); }
-        }
-
         .container {
             text-align: center;
             padding: 2rem;
@@ -140,9 +63,8 @@
             z-index: 1;
         }
 
-        /* 标题改小 */
         h1 {
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             color: #ffffff;
             text-shadow: 0 0 15px rgba(255,255,255,0.8), 2px 2px 4px rgba(0,0,0,0.5);
             margin-bottom: 3rem;
@@ -234,23 +156,12 @@
 </head>
 
 <body>
-
-    <!-- 小猫挂件 -->
-    <div class="cat">
-        <div class="cat-ear left"></div>
-        <div class="cat-ear right"></div>
-        <div class="cat-eye left"></div>
-        <div class="cat-eye right"></div>
-        <div class="cat-body"></div>
-        <div class="cat-tail"></div>
-    </div>
-
     <div class="container">
         <h1>2021 4ever吗？🐈🐾</h1>
         
         <div class="buttons">
-            <button id="yesBtn">yes ✨</button>
-            <button id="noBtn">no 🐾</button>
+            <button id="yesBtn">yes</button>
+            <button id="noBtn">no</button>
         </div>
 
         <div id="content"></div>
@@ -315,7 +226,7 @@
                 const btnContainer = document.createElement('div');
                 btnContainer.style.display = 'flex';
                 btnContainer.style.gap = '1rem';
-                btnContainer.style.justifyContent: 'center';
+                btnContainer.style.justifyContent = 'center';
 
                 const btn1 = document.createElement('button');
                 btn1.innerText = 'yes';
@@ -344,4 +255,5 @@
         }
     </script>
 </body>
-</html>
+</html> 
+公主专属
