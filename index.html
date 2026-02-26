@@ -63,35 +63,12 @@
             z-index: 1;
         }
 
-        /* 标题美化 */
         h1 {
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             color: #ffffff;
-            text-shadow: 
-                0 0 10px rgba(255,255,255,0.9),
-                0 0 25px rgba(255, 180, 210, 0.6),
-                0 0 40px rgba(255, 120, 180, 0.4),
-                2px 2px 6px rgba(0,0,0,0.5);
+            text-shadow: 0 0 15px rgba(255,255,255,0.8), 2px 2px 4px rgba(0,0,0,0.5);
             margin-bottom: 3rem;
-            letter-spacing: 6px;
-            font-weight: bold;
-            animation: titleGlow 3s ease-in-out infinite alternate;
-        }
-        @keyframes titleGlow {
-            0% {
-                text-shadow: 
-                    0 0 10px rgba(255,255,255,0.9),
-                    0 0 25px rgba(255, 180, 210, 0.6),
-                    0 0 40px rgba(255, 120, 180, 0.4),
-                    2px 2px 6px rgba(0,0,0,0.5);
-            }
-            100% {
-                text-shadow: 
-                    0 0 15px rgba(255,255,255,1),
-                    0 0 35px rgba(255, 180, 210, 0.8),
-                    0 0 55px rgba(255, 120, 180, 0.6),
-                    2px 2px 6px rgba(0,0,0,0.5);
-            }
+            letter-spacing: 4px;
         }
 
         .buttons {
@@ -101,27 +78,21 @@
             justify-content: center;
         }
 
-        /* ✅ 毛玻璃 + 透明悬浮卡片按钮 */
         button {
             padding: 0.8rem 2.5rem;
             font-size: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: none;
             border-radius: 50px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: #ffffff;
+            background-color: #ffffff;
+            color: #333333;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
         }
 
         button:hover {
-            transform: translateY(-4px) scale(1.05);
-            background: rgba(255, 255, 255, 0.25);
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
         }
 
         #content {
@@ -253,9 +224,9 @@
 
             if (showButtons) {
                 const btnContainer = document.createElement('div');
-                btnContainer.style.display: 'flex';
-                btnContainer.style.gap: '1rem';
-                btnContainer.style.justifyContent: 'center';
+                btnContainer.style.display = 'flex';
+                btnContainer.style.gap = '1rem';
+                btnContainer.style.justifyContent = 'center';
 
                 const btn1 = document.createElement('button');
                 btn1.innerText = 'yes ✨';
