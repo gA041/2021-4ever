@@ -24,6 +24,34 @@
             font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
             background-color: rgba(0,0,0,0.3);
             background-blend-mode: darken;
+            overflow-x: hidden;
+        }
+
+        /* 飘落动画 */
+        .falling {
+            position: fixed;
+            top: -10vh;
+            z-index: 0;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100px) rotate(360deg);
+                top: 105vh;
+                opacity: 0;
+            }
         }
 
         .container {
@@ -31,14 +59,39 @@
             padding: 2rem;
             width: 90%;
             max-width: 600px;
+            position: relative;
+            z-index: 1;
         }
 
+        /* 标题美化 */
         h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             color: #ffffff;
-            text-shadow: 0 0 15px rgba(255,255,255,0.8), 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 
+                0 0 10px rgba(255,255,255,0.9),
+                0 0 25px rgba(255, 180, 210, 0.6),
+                0 0 40px rgba(255, 120, 180, 0.4),
+                2px 2px 6px rgba(0,0,0,0.5);
             margin-bottom: 3rem;
-            letter-spacing: 4px;
+            letter-spacing: 6px;
+            font-weight: bold;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+        @keyframes titleGlow {
+            0% {
+                text-shadow: 
+                    0 0 10px rgba(255,255,255,0.9),
+                    0 0 25px rgba(255, 180, 210, 0.6),
+                    0 0 40px rgba(255, 120, 180, 0.4),
+                    2px 2px 6px rgba(0,0,0,0.5);
+            }
+            100% {
+                text-shadow: 
+                    0 0 15px rgba(255,255,255,1),
+                    0 0 35px rgba(255, 180, 210, 0.8),
+                    0 0 55px rgba(255, 120, 180, 0.6),
+                    2px 2px 6px rgba(0,0,0,0.5);
+            }
         }
 
         .buttons {
@@ -48,21 +101,27 @@
             justify-content: center;
         }
 
+        /* ✅ 毛玻璃 + 透明悬浮卡片按钮 */
         button {
             padding: 0.8rem 2.5rem;
             font-size: 1.5rem;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 50px;
-            background-color: #ffffff;
-            color: #333333;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #ffffff;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.2s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
         }
 
         button:hover {
-            transform: scale(1.05);
+            transform: translateY(-4px) scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
         }
 
         #content {
@@ -77,6 +136,7 @@
             max-height: 400px;
             overflow-y: auto;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
         }
 
         /* 小贴士区域 很小很轻 */
@@ -126,11 +186,11 @@
 
 <body>
     <div class="container">
-        <h1>2021 4ever？✨🐈</h1>
+        <h1>2021 4ever吗？🐈🐾</h1>
         
         <div class="buttons">
-            <button id="yesBtn">yes</button>
-            <button id="noBtn">no</button>
+            <button id="yesBtn">yes ✨</button>
+            <button id="noBtn">no 🐾</button>
         </div>
 
         <div id="content"></div>
@@ -146,6 +206,20 @@
     </div>
 
     <script>
+        // 飘落元素：🐈♾️✨💍🐾
+        const emojis = ["🐈","♾️","✨","💍","🐾"];
+        function createFalling() {
+            const div = document.createElement("div");
+            div.classList.add("falling");
+            div.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            div.style.left = Math.random() * 100 + "%";
+            div.style.animationDuration = (Math.random() * 3 + 4) + "s";
+            div.style.fontSize = (Math.random() * 15 + 15) + "px";
+            document.body.appendChild(div);
+            setTimeout(() => div.remove(), 7000);
+        }
+        setInterval(createFalling, 600);
+
         const loveText = `宝宝 和你在一起的日子总是这么幸福且短暂 和你见面很开心又很难过 每次洗漱完出来看到你都在我睡的那一边放好水 我就拿起手机边看日历边想 还有多少天就又要和你分开 我父母总是告诉我我长大了不可以再那么依赖别人 要独立 也不会怎么和我表达感情 交流也是越来越少 让我一直都认为人是漂泊的候鸟 直到你告诉我我可以去依赖你 信任你 多和你表达感受 我又觉得爱是可以宜居的小岛 有一种 我见众生皆草木 唯独见你是青山的感觉 你也总是很照顾我 虽然我会莫名其妙跟你生一些小气 但你都会说是你的错 包容我 这些都是我从未体验过的 我总说我不信任你 不是你做的不够好 是我怕信任你依赖你之后如果你不喜欢我了我又要变回原来的样子 那我要怎么习惯 但你好像拥有什么魔法 让我可以一点点向你摊呈自己 也让你看到我的脆弱 眼泪 还有一些不完美的那面 但真诚的 谢谢你的存在 有你在我总会很安心  送你去高铁站我想让你快点进去 这样我就不会那么舍不得你 而我现在能给你的又太少 再给我一点时间 以后一定能给你 我发誓 我不是很会表达这些情情话话的东西 但真心希望你好 我们互相加油变成更好的自己
 
 山高路远 一路平安  一个人在国外照顾好自己 虽然每次我说这句话 你都说你已经会很好的照顾自己了 但想到你一个人面对那些  一个人拖行李 落地要从机场坐那么久的车才能到家 也很不容易 我心疼你 做饭的时候小心不要烫到 走路要慢慢走 小心不要磕磕碰碰 多喝热水 要少吃褪黑素  不要着凉不要生病！我爱你 要多多想我 不可以哭哭噢  多笑笑`;
@@ -161,10 +235,10 @@
 
         noBtn.addEventListener('click', () => {
             content.innerText = '';
-            showModal('不再仔细想想了？确定吗', false);
+            showModal('不再仔细想想了吗，确定吗 🐈', false);
             setTimeout(() => {
                 clearModals();
-                showModal('请再次点击 没有选no的机会哦', true);
+                showModal('没有选no的机会哦 ♾️', true);
             }, 3000);
         });
 
@@ -179,17 +253,17 @@
 
             if (showButtons) {
                 const btnContainer = document.createElement('div');
-                btnContainer.style.display = 'flex';
-                btnContainer.style.gap = '1rem';
-                btnContainer.style.justifyContent = 'center';
+                btnContainer.style.display: 'flex';
+                btnContainer.style.gap: '1rem';
+                btnContainer.style.justifyContent: 'center';
 
                 const btn1 = document.createElement('button');
-                btn1.innerText = 'yes';
+                btn1.innerText = 'yes ✨';
                 const btn2 = document.createElement('button');
-                btn2.innerText = 'yes';
+                btn2.innerText = 'yes ✨';
 
                 const handleBtnClick = () => {
-                    alert('恭喜snx永远爱我');
+                    alert('恭喜snx永远爱我 💍');
                     clearModals();
                 };
 
@@ -211,4 +285,3 @@
     </script>
 </body>
 </html>
-公主专属
